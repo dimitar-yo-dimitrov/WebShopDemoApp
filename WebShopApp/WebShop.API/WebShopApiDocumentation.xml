@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebShop.API</name>
+    </assembly>
+    <members>
+        <member name="M:WebShop.API.Controllers.ProductController.#ctor(WebShop.Core.Contracts.IProductService)">
+            <summary>
+            IoC
+            </summary>
+            <param name="productService"></param>
+        </member>
+        <member name="M:WebShop.API.Controllers.ProductController.GetAll">
+            <summary>
+            Get All products
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
