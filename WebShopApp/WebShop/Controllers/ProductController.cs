@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebShop.Core.Contracts;
 using WebShop.Core.Models;
 
@@ -7,7 +8,7 @@ namespace WebShop.Controllers
     /// <summary>
     /// Web shop products
     /// </summary>
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
 
@@ -21,6 +22,7 @@ namespace WebShop.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetAll();
