@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using WebShop.Core.Contracts;
 using WebShop.Core.Data.Common;
 using WebShop.Core.Data.Models;
@@ -10,19 +8,14 @@ namespace WebShop.Core.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IConfiguration _config;
-
         private readonly IRepository _repo;
 
         /// <summary>
         /// IoC 
         /// </summary>
-        /// <param name="config">Application configuration</param>
-        public ProductService(
-            IConfiguration config,
-            IRepository repo)
+        /// <param name="repo">Application configuration</param>
+        public ProductService(IRepository repo)
         {
-            _config = config;
             _repo = repo;
         }
 
@@ -73,16 +66,16 @@ namespace WebShop.Core.Services
                 }).ToListAsync();
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllWhere(Expression<Func<Product, bool>> search)
-        {
-            return await _repo.AllReadonly(search)
-                .Select(p => new ProductDto()
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    Quantity = p.Quantity
-                }).ToListAsync();
-        }
+        //public async Task<IEnumerable<ProductDto>> GetAllWhere(Expression<Func<Product, bool>> search)
+        //{
+        //    return await _repo.AllReadonly(search)
+        //        .Select(p => new ProductDto()
+        //        {
+        //            Id = p.Id,
+        //            Name = p.Name,
+        //            Price = p.Price,
+        //            Quantity = p.Quantity
+        //        }).ToListAsync();
+        //}
     }
 }
