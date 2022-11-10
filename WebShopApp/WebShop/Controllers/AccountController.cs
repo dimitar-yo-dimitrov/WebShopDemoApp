@@ -16,8 +16,8 @@ namespace WebShop.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]

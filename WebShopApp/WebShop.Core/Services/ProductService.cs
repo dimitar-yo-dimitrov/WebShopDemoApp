@@ -39,7 +39,8 @@ namespace WebShop.Core.Services
 
         public async Task Delete(Guid id)
         {
-            var product = await _repo.All<Product>()
+            var product = await _repo
+                .All<Product>()
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product != null)
@@ -56,26 +57,16 @@ namespace WebShop.Core.Services
         /// <returns>List of products</returns>
         public async Task<IEnumerable<ProductDto>> GetAll()
         {
-            return await _repo.AllReadonly<Product>(p => p.IsActive)
+            return await _repo
+                .AllReadonly<Product>(p => p.IsActive)
                 .Select(p => new ProductDto()
                 {
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
                     Quantity = p.Quantity
-                }).ToListAsync();
+                })
+                .ToListAsync();
         }
-
-        //public async Task<IEnumerable<ProductDto>> GetAllWhere(Expression<Func<Product, bool>> search)
-        //{
-        //    return await _repo.AllReadonly(search)
-        //        .Select(p => new ProductDto()
-        //        {
-        //            Id = p.Id,
-        //            Name = p.Name,
-        //            Price = p.Price,
-        //            Quantity = p.Quantity
-        //        }).ToListAsync();
-        //}
     }
 }
