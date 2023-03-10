@@ -1,3 +1,3 @@
-# WebShopDemoApp
+#Workshop: WebShopDemoApp - ASP.NET Identity
 
-Simple Console Application using ASP.NET Core MVC Web App, ASP.NET Core Web API and ASP.NET Core gRPC Service
+Simple Web app using ASP.NET Core MVC, ASP.NET Core 6, Web API and ASP.NET Core gRPC Service
